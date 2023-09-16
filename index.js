@@ -6,13 +6,15 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+let numberOrder = 0;
+
 app.post("/", (req, res) => {
   console.log(req.body);
-
+  numberOrder++;
   let order = req.body.basketItem
     .map(
       (obj) =>
-        `ШАУРМА - ${obj.name}
+        `${obj.categoryName} - ${obj.name}
 Всего ${obj.amount} ед. - стоимость ${obj.price}р. за ед.
 *********************************`
     )
@@ -33,7 +35,7 @@ app.post("/", (req, res) => {
   const chatId = "1144477936";
   bot.sendMessage(
     chatId,
-    `Номер заказа - 1
+    `Номер заказа - ${numberOrder}
 Данные по заказу:
 ${addressPoint}
 ${address}
