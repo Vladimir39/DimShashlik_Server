@@ -32,23 +32,32 @@ app.post("/", (req, res) => {
 
   const token = "6461092074:AAEES5-rxqomN-wthF-1mRZh3-tgO-oqRpQ";
   const bot = new TelegramApi(token, { polling: false });
-  const chatId = "1144477936";
-  bot.sendMessage(
-    chatId,
-    `Номер заказа - ${numberOrder}
+  const chatIds = [
+    "1144477936",
+    "5114637480",
+    "5205922440",
+    "5656520171",
+    "5864038346",
+  ];
+  chatIds.forEach((chatId) => {
+    bot.sendMessage(
+      chatId,
+      `Номер заказа - ${numberOrder}
 Данные по заказу:
 ${addressPoint}
 ${address}
-
+  
 Номер телефона - ${req.body.delivery.phone}
 Доп. информация - ${req.body.delivery.addition}
 Время доставки - ${req.body.delivery.time}
-
+  
 Блюда:
 ${order}
 Сумма по заказу : ${req.body.price}.00р.`
-  );
-  res.send("ответ");
+    );
+  });
+
+  res.send(`${numberOrder}`);
 });
 
 app.listen(4444, (err) => {
