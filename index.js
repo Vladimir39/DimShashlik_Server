@@ -1,6 +1,6 @@
-import express from "express";
-import cors from "cors";
-import TelegramApi from "node-telegram-bot-api";
+const express = require("express");
+const cors = require("cors");
+const TelegramApi = require("node-telegram-bot-api");
 
 const app = express();
 app.use(express.json());
