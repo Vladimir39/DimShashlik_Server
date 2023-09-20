@@ -63,8 +63,8 @@ ${order}
 });
 
 const httpsOptions = {
-  key: fs.readFileSync("/etc/ssl/server.key"),
-  cert: fs.readFileSync("/etc/ssl/ssl-cert-snakeoil.pem"),
+  key: fs.readFileSync("/etc/ssl/private/ssl-cert-snakeoil.key"),
+  cert: fs.readFileSync("/etc/ssl/certs/ssl-cert-snakeoil.pem"),
 };
 
 const server = https.createServer(httpsOptions, app);
