@@ -1,3 +1,5 @@
+const https = require("https");
+const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
 const TelegramApi = require("node-telegram-bot-api");
@@ -60,7 +62,14 @@ ${order}
   res.send(`${numberOrder}`);
 });
 
-app.listen(5555, (err) => {
+const httpsOptions = {
+  key: fs.readFileSync("server.key"),
+  cert: fs.readFileSync("server.crt"),
+};
+
+const server = https.createServer(httpsOptions, app);
+
+server.listen(5555, (err) => {
   if (err) {
     return console.log(err);
   }
