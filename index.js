@@ -69,7 +69,7 @@ const httpsOptions = {
 
 const server = https.createServer(httpsOptions, app);
 
-server.listen(5555, (err) => {
+server.listen(5555, "0.0.0.0", (err) => {
   if (err) {
     return console.log(err);
   }
