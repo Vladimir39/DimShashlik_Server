@@ -10,16 +10,6 @@ app.use(cors());
 
 let numberOrder = 0;
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://dimshashlik.ru");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  next();
-});
-
 app.post("/", (req, res) => {
   console.log(req.body);
   numberOrder++;
