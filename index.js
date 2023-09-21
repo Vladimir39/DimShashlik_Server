@@ -4,9 +4,13 @@ const express = require("express");
 const cors = require("cors");
 const TelegramApi = require("node-telegram-bot-api");
 
+const corsOptions = {
+  origin: ["https://dimshashlik.ru"],
+};
+
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 
 let numberOrder = 0;
 
