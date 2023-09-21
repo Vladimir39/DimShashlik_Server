@@ -10,6 +10,16 @@ app.use(cors());
 
 let numberOrder = 0;
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://dimshashlik.ru");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  next();
+});
+
 app.post("/", (req, res) => {
   console.log(req.body);
   numberOrder++;
@@ -39,7 +49,7 @@ app.post("/", (req, res) => {
     "5114637480",
     "5205922440",
     "5656520171",
-    "5864038346",
+    //"5864038346",
   ];
   chatIds.forEach((chatId) => {
     bot.sendMessage(
